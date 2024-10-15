@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Category {
-    private static final Map<String, Category> categories = new HashMap<>();
+    private static final Map<String, Category> instances = new HashMap<>();
     private final String name;
 
     private Category(String name) {
@@ -13,6 +13,10 @@ public class Category {
             throw new IllegalArgumentException("Category name can't be null or empty.");
         }
         this.name = name;
+    }
+
+    public static Category getInstance(String name){
+        return instances.computeIfAbsent(name, Category::new);
     }
 
     public static Category of(String name) {

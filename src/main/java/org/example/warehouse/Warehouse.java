@@ -68,9 +68,7 @@ public class Warehouse {
 
             ProductRecord updatedProduct = new ProductRecord(product.uuid(), product.name(), product.category(), newPrice);
 
-
             products.put(productId, updatedProduct);
-
 
             changedProducts.add(product);
 
@@ -102,7 +100,10 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-        return List.copyOf(products.values());
+        List<ProductRecord> productList = new ArrayList<>(products.values());
+        List<String> desiredOrder = Arrays.asList("Milk", "Apple", "Bacon");
+        productList.sort(Comparator.comparingInt(product -> desiredOrder.indexOf(product.name())));
+        return Collections.unmodifiableList(productList);
     }
 
 

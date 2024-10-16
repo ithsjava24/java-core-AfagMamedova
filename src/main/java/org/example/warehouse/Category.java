@@ -3,7 +3,6 @@ package org.example.warehouse;
 import java.util.Objects;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class Category {
     private static final Map<String, Category> instances = new HashMap<>();
